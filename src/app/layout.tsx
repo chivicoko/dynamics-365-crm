@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Dynamics 365 crm | Sales Hub",
+  title: {
+    default: "Dynamics 365 CRM | Sales Hub",
+    template: "%s | Dynamics 365 CRM"
+  },
   description: "Sales Hub services at its possible best",
+  keywords: "CRM, Sales, Hub, Sales hub, services, leads, sales leads, customers, clients",
 };
 
 export default function RootLayout({

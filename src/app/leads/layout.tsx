@@ -4,8 +4,8 @@ import Navbar from "@/components/Navbar";
 
 
 export const metadata = {
-  title: "Admin Area",
-  description: "GreenBasket Stores is the number 1 Online store for groceries of all sorts, making buying and selling of groceries of all sorts really easy for everyone.",
+  title: "Best of the Leads",
+  description: "Sales Hub services at its possible best",
 }
 
 export default function Layout({ children }: { children: ReactNode }) {
