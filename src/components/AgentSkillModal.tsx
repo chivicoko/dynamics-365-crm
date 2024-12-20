@@ -5,30 +5,19 @@ import { DirectionsRunOutlined, EditRoadOutlined, FileCopyOutlined, KeyboardArro
 import React, { useState } from 'react'
 
 const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
-    const [salesLeadOpen, setSalesLeadOpen] = useState(false);
     const [searchText, setSearchText] = useState<string>('');
     const [inputItems, setInputItems] = useState<string[]>([]);
+    const [salesLeadOpen, setSalesLeadOpen] = useState(false);
 
     const handlesalesLeadToggle = () =>setSalesLeadOpen((prev) => !prev);
 
-    // const handleSubmit = () => {
-    //     const inputItems = [];
-    //     inputItems.push(searchText);
-    //     console.log(inputItems);
-
-    //     setInputItems(inputItems);
-    // }
-
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault(); // Prevent page reload on form submission
+        e.preventDefault();
       
-        // Split the input by commas and remove extra whitespace
         const newItems = searchText.split(',').map(item => item.trim()).filter(item => item !== '');
       
-        // Append new items to the existing inputItems
         setInputItems(prevItems => [...prevItems, ...newItems]);
       
-        // Clear the input field after submission
         setSearchText('');
       };
       
@@ -38,16 +27,19 @@ const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
 
   return (
     <div className="fixed inset-0 p-2 flex items-center justify-center bg-black bg-opacity-60 z-50">
-        <div className="overflow-auto custom-scrollbar relative w-[94%] h-[89.5%] sm:w-[90%] sm:h-[88.5%] md:w-[90%] md:h-[88.5%] lg:w-[75%] lg:h-[88.5%] xl:w-[52%] xl:h-[88.5%] rounded-[20px] py-5 px-3 sm:px-6 pt-8 bg-gradient-to-b from-white via-white to-[#eee9f5] shadow-xl flex flex-col justify-between gap-6 text-gray-700">
+        <div className="overflow-auto custom-scrollbar relative w-[94%] h-[89.5%] sm:w-[90%] sm:h-[88.5%] md:w-[90%] md:h-[88.5%] lg:w-[75%] lg:h-[88.5%] xl:w-[52%] xl:h-[88.5%] rounded-[20px] py-5 px-3 sm:px-6 pt-8 bg-gradient-to-b from-white via-white to-[#eee9f5] shadow-xl flex flex-col justify-between gap-6 text-gray-800">
             <div className='flex flex-col gap-4'>
                 <button onClick={handleLeadToggle} className='mb-2 w-6 h-6 md:h-8 md:w-8 p-2 self-end flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl md:text-3xl'>&times;</button>
-                <p className='flex items-center gap-1 font-semibold'>✨ <span>Agent Skill</span></p>
+                <p className='flex items-center gap-1 font-semibold'>
+                    <span className='bg-gradient-to-r from-[#475ac7] via-[#3a71b5] to-[#7848a9] bg-clip-text text-transparent'>✨</span>
+                    <span>Agent Skill</span>
+                </p>
 
                 <div className="flex flex-col gap-5 rounded-lg shadow-md p-3 sm:p-5 border-t border-gray-100">
                     <div className="w-full flex flex-col gap-3">
                         <div className="w-full flex items-center justify-between gap-2">
                             <p className='font-semibold'>Check if on-hand inventories will allow all sales orders to ship without delay</p>
-                            <button onClick={handlesalesLeadToggle}>{salesLeadOpen ? <KeyboardArrowUpOutlined /> : <KeyboardArrowDownOutlined />}</button>
+                            <button className="w-6 h-6 p-2 flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl" onClick={handlesalesLeadToggle}>{salesLeadOpen ? <KeyboardArrowUpOutlined /> : <KeyboardArrowDownOutlined />}</button>
                         </div>
 
                         {salesLeadOpen && 

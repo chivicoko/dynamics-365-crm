@@ -267,3 +267,38 @@ input:checked + .slider:before {
   border-radius: 50%;
   cursor: pointer;
 }
+
+.slick-arrow.slick-next {
+  display: block  !important;
+  right: -0.1rem !important;
+
+  display: flex  !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.slick-arrow.slick-next::before {
+  top: 2px !important;
+  border-radius: 50%;
+  color: white !important;
+  background: gray !important;
+  width: fit-content !important;
+  height: fit-content !important;
+}
+
+/* font-size: 0;
+line-height: 0;
+position: absolute;
+top: 50%;
+display: block;
+width: 20px;
+height: 20px;
+padding: 0;
+cursor: pointer;
+background:  */
+
+.slick-arrow.slick-prev {
+  display: none !important;
+}

@@ -1,19 +1,28 @@
-import { KeyboardArrowDownOutlined, PieChart, SecurityOutlined, ThumbDownOutlined, ThumbUpOutlined } from '@mui/icons-material'
-import Image from 'next/image'
-import React from 'react'
+'use client';
 
-const EngageLead = () => {
+import { leadsProps2 } from '@/utils/types';
+import { KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, PieChart, SecurityOutlined, ThumbDownOutlined, ThumbUpOutlined } from '@mui/icons-material'
+import Image from 'next/image'
+import React, { useState } from 'react'
+
+const EngageLead: React.FC<leadsProps2> = ({lead}) => {
+    const [salesLeadOpen, setSalesLeadOpen] = useState(false);
+
+    const handlesalesLeadToggle = () =>setSalesLeadOpen((prev) => !prev);
+
+    // console.log(lead);
+
   return (
     <>
         <div className="flex flex-col gap-2 rounded-lg shadow-xl py-2 px-3 bg-white">
             <div className="flex flex-col w-full gap-2 rounded-xl p-3 bg-gradient-to-r from-[#5971fc0b] via-[#60a5fa0d] to-[#c084fc13]">
-                <p className='text-xs font-semibold'>Why I picked this lead</p>
+                <p className='text-xs font-semibold bg-gradient-to-r from-[#7c8ff6] via-[#5681b5] to-[#8e62ba] bg-clip-text text-transparent w-fit'>Why I picked this lead</p>
                 
                 <ul>
                     <li className='text-xs flex items-center gap-2'>
                         <span className='w-1 h-1 bg-gray-500 rounded-full'></span>
                         <span>
-                            Jane is a <strong>key decision maker</strong> and was browsing <strong>&apos;espresson machines&apos;</strong> on First Coffee&apos;s website
+                            {lead.name} is a <strong>key decision maker</strong> and was browsing <strong>&apos;espresson machines&apos;</strong> on First Coffee&apos;s website
                             <span className='text-[8px] bg-white border rounded-sm px-[2px] ml-3'>1</span>
                         </span>
                     </li>
@@ -46,7 +55,7 @@ const EngageLead = () => {
                         </div>
                         <div className="flex flex-col gap-1 ">
                             <p className='text-gray-600 text-xs'>Decision maker</p>
-                            <p className='text-gray-700 text-sm font-semibold'>Yes</p>
+                            <p className='text-gray-700 text-sm font-semibold bg-gradient-to-r from-[#7c8ff6] via-[#5681b5] to-[#8e62ba] bg-clip-text text-transparent'>Yes</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-2 p-3 w-full md:w-[179px] shadow-md bg-white rounded-2xl">
@@ -61,7 +70,7 @@ const EngageLead = () => {
                         </div>
                         <div className="flex flex-col gap-1 ">
                             <p className='text-gray-600 text-xs'>Potential deal value</p>
-                            <p className='text-gray-700 text-sm font-semibold'>$1M</p>
+                            <p className='text-gray-700 text-sm font-semibold bg-gradient-to-r from-[#7c8ff6] via-[#5681b5] to-[#8e62ba] bg-clip-text text-transparent'>$1M</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-2 p-3 w-full md:w-[179px] shadow-md bg-white rounded-2xl">
@@ -76,7 +85,7 @@ const EngageLead = () => {
                         </div>
                         <div className="flex flex-col gap-1 ">
                             <p className='text-gray-600 text-xs'>Intent</p>
-                            <p className='text-gray-700 text-sm font-semibold'>High</p>
+                            <p className='text-gray-700 text-sm font-semibold bg-gradient-to-r from-[#7c8ff6] via-[#5681b5] to-[#8e62ba] bg-clip-text text-transparent'>High</p>
                         </div>
                     </div>
                 </div>
@@ -99,10 +108,12 @@ const EngageLead = () => {
         </div>
         <div className="flex flex-col gap-2 bg-white py-3 px-4 rounded-lg shadow-xl">
             <div className="flex items-center justify-between">
-                <p>About Jane</p>
-                <KeyboardArrowDownOutlined style={{fontSize: '15px'}} />
+                <p>About {lead.name}</p>
+                <button className="w-6 h-6 p-2 flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl" onClick={handlesalesLeadToggle}>{salesLeadOpen ? <KeyboardArrowUpOutlined /> : <KeyboardArrowDownOutlined />}</button>
             </div>
-            <p className='text-xs'>Jane Reyes, the Chief Operating Officer of Northwind Traders, is a dynamic leader with a proven track record in operations and enhancing customer experiences. Under her guidance, Northwind Traders&apos; in-store coffee shops have flourished, becoming a hall-mark of quality and innovation. Jane&apos;s commitment to excellence makes her an ideal partner for First Coffee. She is always seeking top-tier equipments to elevate her coffee shops&apos; offerings, ensuring consistent, high-quality service.</p>
+            {salesLeadOpen && 
+            <p className='text-xs'>{lead.name}, the {lead.position} of {lead.at}, is a dynamic leader with a proven track record in operations and enhancing customer experiences. Under her guidance, {lead.at}&apos; in-store coffee shops have flourished, becoming a hall-mark of quality and innovation. {lead.name}&apos;s commitment to excellence makes her an ideal partner for First Coffee. She is always seeking top-tier equipments to elevate her coffee shops&apos; offerings, ensuring consistent, high-quality service.</p>
+            }
         </div>
     </>
   )

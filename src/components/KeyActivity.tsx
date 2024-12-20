@@ -3,8 +3,8 @@ import Image from 'next/image'
 import React from 'react'
 
 const KeyActivities = [
-    { id: 1, name: "Cafe A100 for Woodland Bank", company: 'Woodland Bank', amount: '$280,000', days: '8 days to close', img: '/userplaceholder1.svg', position: 'COO', at: 'Northwind Traders', icon: <EmailOutlined  style={{fontSize: '14px'}} />, topic: 'Review draft and reply to Chris Naido' },
-    { id: 2, name: "Partnership opportunity for Fabrikam", company: 'Fabrikam', amount: '$5,000,000', days: '12 days to close', img: '/userplaceholder1.svg', position: 'Head of Real Estate Development', at: 'Contoso Coffee', icon: <CalendarMonthOutlined style={{fontSize: '14px'}} />, topic: "Prepare me for Fabrikan's stakeholders meeting" },
+    { id: 1, name: "Cafe A100 for Woodland Bank", company: 'Woodland Bank', amount: '$280,000', days: '8 days to close', img: '/userplaceholder.svg', position: 'COO', at: 'Northwind Traders', icon: <EmailOutlined  style={{fontSize: '14px'}} />, topic: 'Review draft and reply to Chris Naido' },
+    { id: 2, name: "Partnership opportunity for Fabrikam", company: 'Fabrikam', amount: '$5,000,000', days: '12 days to close', img: '/slide-1.png', position: 'Head of Real Estate Development', at: 'Contoso Coffee', icon: <CalendarMonthOutlined style={{fontSize: '14px'}} />, topic: "Prepare me for Fabrikan's stakeholders meeting" },
     { id: 3, name: "Harrison Curtis", img: '/userplaceholder1.svg', position: 'COO', at: 'Northwind Traders', icon: <CalendarMonthOutlined style={{fontSize: '14px'}} />, topic: 'Engage with Jane Reyes' },
     { id: 4, name: "Jermaine Berrett", img: '/userplaceholder1.svg', position: 'COO', at: 'Northwind Traders', icon: <CalendarMonthOutlined style={{fontSize: '14px'}} />, topic: 'Engage with Jane Reyes' },
     { id: 5, name: "Gerald Stephens", img: '/userplaceholder1.svg', position: 'COO', at: 'Northwind Traders', icon: <CalendarMonthOutlined style={{fontSize: '14px'}} />, topic: 'Engage with Jane Reyes' },

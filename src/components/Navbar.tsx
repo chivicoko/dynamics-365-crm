@@ -1,8 +1,7 @@
 'use client';
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import React, { useEffect, useState } from 'react';
-import { Add, DeleteOutline, EditNoteOutlined, ImageOutlined, KeyboardArrowDown, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, List, Menu, PeopleOutlineOutlined, PinOutlined, Refresh } from '@mui/icons-material';
+import { Add, DeleteOutline, EditNoteOutlined, FileCopySharp, FolderSharedOutlined, ImageOutlined, KeyboardArrowDown, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, List, Menu, PeopleOutlineOutlined, PieChartOutline, PinOutlined, Refresh, ScreenShareOutlined, ShareOutlined, Sort } from '@mui/icons-material';
 import Sidebar from './Sidebar';
 import { usePathname } from 'next/navigation';
 import LeadsHeaderArea from './LeadsHeaderArea';
@@ -14,14 +13,14 @@ const navbarTabs = [
   { id: 4, title: "Refresh", icon: <Refresh style={{fontSize: '15px'}} /> },
   { id: 5, title: "Collaborate", icon: <PeopleOutlineOutlined style={{fontSize: '15px'}} /> },
   { id: 6, title: "Delete", icon: <DeleteOutline style={{fontSize: '15px'}} /> },
-  { id: 7, title: "Smart data", icon: <AccountCircleIcon style={{fontSize: '15px'}} /> },
-  { id: 8, title: "Edit filters", icon: <AccountCircleIcon style={{fontSize: '15px'}} /> },
+  { id: 7, title: "Smart data", icon: <PieChartOutline style={{fontSize: '15px'}} /> },
+  { id: 8, title: "Edit filters", icon: <Sort style={{fontSize: '15px'}} /> },
   { id: 9, title: "Edit columns", icon: <EditNoteOutlined style={{fontSize: '15px'}} /> },
 ]
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
+  const [open2, setOpen2] = useState(true);
   const [salesLeadOpen, setSalesLeadOpen] = useState(false);
 
   const pathName = usePathname();
@@ -89,7 +88,7 @@ const Navbar: React.FC = () => {
             </ul>
 
             <button className='flex items-center justify-between gap-1 py-[2px] px-1 rounded-[3.5px] bg-blue-700 text-white'>
-              <span className='' style={{fontSize: '14px'}}><PinOutlined fontSize='small' /> </span> 
+              <span className='' style={{fontSize: '14px'}}><ScreenShareOutlined fontSize='small' /> </span> 
               <span className='h-3 w-[1px] bg-gray-200'></span>
               <KeyboardArrowDown fontSize='small'/>
             </button>
@@ -118,7 +117,7 @@ const Navbar: React.FC = () => {
               </ul>
 
               <button className='flex items-center justify-between gap-1 py-[2px] px-1 rounded-[3.5px] bg-blue-700 text-white'>
-                <span className='' style={{fontSize: '14px'}}><PinOutlined fontSize='small' /> </span> 
+                <span className='' style={{fontSize: '14px'}}><ShareOutlined fontSize='small' /> </span> 
                 <span className='h-3 w-[1px] bg-gray-200'></span>
                 <KeyboardArrowDown fontSize='small'/>
               </button>

@@ -101,7 +101,7 @@ const Sidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = () =>
 
     return (
     <nav className={` ${show === 'block' ? 'fixed lg:hidden' : 'hidden'} bg-gray-100 pb-16 h-fit min-h-screen lg:block top-0 left-0 z-50 lg:z-auto w-4/5 sm:w-3/5 lg:w-[13vw] flex flex-col justify-start items-center gap-5 transition-all duration-300`}>
-        <div className='py-3 w-full flex flex-col items-center lg:items-start'>
+        <div className='py-3 w-full flex flex-col items-center lg:items-start overflow-auto custom-scrollbar '>
             <button className='self-end mr-3 md:mr-8 mt-2 text-3xl lg:hidden' onClick={closeSidebar}>&times;</button>
             <button onClick={() => setOpen(!open)} className="text-gray-700 hidden lg:block px-3 focus:outline-[#247B7B]">
                 <Menu />
