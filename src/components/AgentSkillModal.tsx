@@ -1,10 +1,8 @@
 'use client';
 
 import { leadModalProps } from '@/utils/types'
-import { DirectionsRunOutlined, EditOutlined, EditRoadOutlined, FileCopyOutlined, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, LinkedIn, ListAltOutlined, MenuBookOutlined, Person3Outlined, Search, SendOutlined, ThumbDownOutlined, ThumbUpOutlined } from '@mui/icons-material'
-import Image from 'next/image'
+import { DirectionsRunOutlined, EditRoadOutlined, FileCopyOutlined, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, ListAltOutlined, MenuBookOutlined, Person3Outlined } from '@mui/icons-material'
 import React, { useState } from 'react'
-import EngageLead from './EngageLead';
 
 const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
     const [salesLeadOpen, setSalesLeadOpen] = useState(false);
@@ -13,13 +11,30 @@ const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
 
     const handlesalesLeadToggle = () =>setSalesLeadOpen((prev) => !prev);
 
-    const handleSubmit = () => {
-        const inputItems = [];
-        inputItems.push(searchText);
-        console.log(inputItems);
+    // const handleSubmit = () => {
+    //     const inputItems = [];
+    //     inputItems.push(searchText);
+    //     console.log(inputItems);
 
-        setInputItems(inputItems);
-    }
+    //     setInputItems(inputItems);
+    // }
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault(); // Prevent page reload on form submission
+      
+        // Split the input by commas and remove extra whitespace
+        const newItems = searchText.split(',').map(item => item.trim()).filter(item => item !== '');
+      
+        // Append new items to the existing inputItems
+        setInputItems(prevItems => [...prevItems, ...newItems]);
+      
+        // Clear the input field after submission
+        setSearchText('');
+      };
+      
+      const removeItem = (index: number) => {
+        setInputItems(prevItems => prevItems.filter((_, i) => i !== index));
+      };
 
   return (
     <div className="fixed inset-0 p-2 flex items-center justify-center bg-black bg-opacity-60 z-50">
@@ -55,17 +70,22 @@ const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
                         <div className="flex items-center gap-3">
                             <form onSubmit={handleSubmit} className='w-full flex items-center gap-2'>
                                 <div className="px-2 border bg-white w-[80%] rounded-[5px] flex items-center justify-between">
-                                    <div className='flex items-center rounded-full bg-gray-100 text-sm h-fit'>
-                                        <span className="text-[#666666] mr-2 h-4 w-4 md:h-6 md:w-6 bg-red-100 flex items-center justify-center rounded-full">P</span>
-                                        <span className="text-[#666666] border-r-2 border-gray-200 pr-2">purchasing@contoso.com</span>
-                                        <button className="text-[#666666] text-2xl h-4 w-4 md:h-6 md:w-6 hover:bg-gray-200 flex items-center justify-center rounded-full font-light">&times;</button>
+                                    <div className="w-fit py-[2px] flex items-center gap-1 overflow-x-auto custom-scrollbar2">
+                                        {inputItems.map((item, index) => (
+                                            <div key={index} className='flex items-center rounded-full bg-gray-100 text-sm h-fit'>
+                                                <span className="text-[#666666] mr-2 h-4 w-4 md:h-6 md:w-6 bg-red-100 flex items-center justify-center rounded-full">{item.charAt(0).toUpperCase() || "P"}</span>
+                                                <span className="text-[#666666] border-r-2 border-gray-200 pr-2">{item || "purchasing@contoso.com"}</span>
+                                                <button onClick={() => removeItem(index)} className="text-[#666666] text-2xl h-4 w-4 md:h-6 md:w-6 hover:bg-gray-200 flex items-center justify-center rounded-full font-light">&times;</button>
+                                            </div>
+                                        ))}
                                     </div>
                                     <input
-                                        type="text"
+                                        type="email"
                                         name="searchText"
+                                        placeholder='name@example.com'
                                         value={searchText}
                                         onChange={(e) => setSearchText(e.target.value)}
-                                        className="bg-transparent w-full py-1 text-xs pl-1 focus:outline-0 placeholder:text-xs md:text-base text-gray-700 leading-tight"
+                                        className="bg-transparent w-full min-w-[35%] py-1 text-xs pl-1 focus:outline-0 placeholder:text-xs md:text-base text-gray-700 leading-tight"
                                     />
                                 </div>
                                 <button className='bg-blue-600 hover:bg-blue-700 text-white text-sm py-[6px] px-5 rounded-[5px]'>Allow access</button>

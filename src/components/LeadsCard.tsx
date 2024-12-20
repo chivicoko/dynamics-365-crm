@@ -1,7 +1,9 @@
+'use client';
+
 import { leadModalProps } from '@/utils/types'
 import { CalendarMonthOutlined, EmailOutlined } from '@mui/icons-material'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 const leadsCards = [
     { id: 1, name: "Jane Rayes", img: '/userplaceholder1.svg', position: 'COO', at: 'Northwind Traders', icon: <EmailOutlined  style={{fontSize: '14px'}} />, topic: 'Engage with Jane Reyes', description: 'Jane may be interested in upgrading espresso machine for her in-store coffee shops.', footerWriteup1: 'Expand business', footerWriteup2: 'High buying intent' },
@@ -18,11 +20,21 @@ const leadsCards = [
   ]
   
 const LeadsCard: React.FC<leadModalProps> = ({ handleLeadToggle } ) => {
+    const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+
+  const handleMouseOver = (id: number) => {
+    setHoveredCard(id)
+  }
+
+  const handleMouseOut = () => {
+    setHoveredCard(null)
+  }
     
   return (
     <div className="w-full flex items-center flex-wrap gap-4 pr-6 overflow-auto custom-scrollbar">
         {leadsCards.slice(0,2).map(leadsCard => (
-            <button key={leadsCard.id} onClick={handleLeadToggle} className="flex-1 rounded-xl shadow-sm border-2 py-4 px-3 text-start">
+        <div key={leadsCard.id} className="relative flex-1 ">
+            <button key={leadsCard.id} onMouseOver={() => handleMouseOver(leadsCard.id)} onMouseOut={handleMouseOut} onClick={handleLeadToggle} className="rounded-xl shadow-sm border-2 py-4 px-3 text-start">
                 <div className="flex gap-2">
                     <div className="relative w-8 h-8 rounded-full">
                         <Image
@@ -55,6 +67,17 @@ const LeadsCard: React.FC<leadModalProps> = ({ handleLeadToggle } ) => {
                     {leadsCard.footerWriteup2}
                 </div>
             </button>
+
+            {/* Conditional Popup on hover */}
+            {hoveredCard === leadsCard.id && (
+                <div className="absolute top-0 right-2 mt-2 p-2 w-52 bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                    <p>{leadsCard.name}.</p>
+                    <p>{leadsCard.position} at {leadsCard.at}</p> <hr className='my-2' />
+                    <p>- {leadsCard.footerWriteup1}</p>
+                    <p>- {leadsCard.footerWriteup2}</p>
+                </div>
+            )}
+        </div>
         ))}
     </div>
   )

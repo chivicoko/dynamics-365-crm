@@ -5,7 +5,7 @@ import BasicPagination from './Pagination';
 import { leads } from '@/utils/data';
 import { KeyboardArrowDown, Search } from '@mui/icons-material';
 import { Lead } from '@/utils/types';
-import LeadDetailsModal from './LeadDetailsModal';
+import LeadModal from './LeadModal';
 
 type LeadKeys = keyof Lead;
 
@@ -21,8 +21,9 @@ const LeadTable: React.FC = () => {
   const [totalLeads, setTotalLeads] = useState<number>(0);
   const [searchText, setSearchText] = useState<string>('');
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
+  const [leadOpen, setLeadOpen] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   
-  const [leadDetailsOpen, setLeadDetailsOpen] = useState(false);
 
   useEffect(() => {
     setTotalLeads(leads.length);
@@ -80,8 +81,16 @@ const LeadTable: React.FC = () => {
     setSortConfig({ key, direction });
   };
   
-  const handleLeadDetailsToggle = () => setLeadDetailsOpen((prev) => !prev);
+  const handleLeadToggle = () => setLeadOpen((prev) => !prev);
 
+  const handleMouseOver = (subject: string) => {
+    setHoveredCard(subject);
+  }
+
+  const handleMouseOut = () => {
+    setHoveredCard(null)
+  }
+    
   return (
     <>
       {leads && leads.length > 0 ? (
@@ -96,7 +105,7 @@ const LeadTable: React.FC = () => {
                       <div className="px-1 bg-white w-full rounded-[3px] flex items-center justify-between">
                         <input
                           type="text"
-                          placeholder="Sort, filter and search"
+                          placeholder="Filter and search"
                           name="searchText"
                           value={searchText}
                           onChange={(e) => setSearchText(e.target.value)}
@@ -113,39 +122,96 @@ const LeadTable: React.FC = () => {
               <thead className='bg-white border-b'>
                 <tr className='border-0 rounded-[4px]'>
                   <th className='pl-6 py-3 text-left text-xs font-semibold tracking-wider'></th>
-                  <th onClick={() => requestSort('name')} className='px-6 pl-3 py-2 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
+                  <th onClick={() => requestSort('name')} onMouseOver={() => handleMouseOver("Name")} onMouseOut={handleMouseOut} className='relative px-6 pl-3 py-2 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Name <KeyboardArrowDown fontSize='small' />
+                    
+                    {/* Popup on hover */}
+                    {hoveredCard === 'Name' && (
+                      <span className="absolute -top-11 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                        <span>Click to sort by &apos;Name&apos; column</span>
+                      </span>
+                    )}
                   </th>
-                  <th onClick={() => requestSort('topic')} className='px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
+                  <th onClick={() => requestSort('topic')} onMouseOver={() => handleMouseOver("Topic")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Topic <KeyboardArrowDown fontSize='small' />
+                    
+                    {/* Popup on hover */}
+                    {hoveredCard === 'Topic' && (
+                      <span className="absolute -top-7 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                        <span>Click to sort by &apos;Topic&apos; column</span>
+                      </span>
+                    )}
                   </th>
-                  <th onClick={() => requestSort('statusReason')} className='px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
+                  <th onClick={() => requestSort('statusReason')} onMouseOver={() => handleMouseOver("Status reason")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Status reason <KeyboardArrowDown fontSize='small' />
+                    
+                    {/* Popup on hover */}
+                    {hoveredCard === 'Status reason' && (
+                      <span className="absolute -top-11 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                        <span>Click to sort by &apos;Status reason&apos; column</span>
+                      </span>
+                    )}
                   </th>
-                  <th onClick={() => requestSort('createdOn')} className='px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
+                  <th onClick={() => requestSort('createdOn')} onMouseOver={() => handleMouseOver("Created on")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Created on <KeyboardArrowDown fontSize='small' />
+
+                    {/* Popup on hover */}
+                    {hoveredCard === 'Created on' && (
+                      <span className="absolute -top-11 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                        <span>Click to sort by &apos;Created on&apos; column</span>
+                      </span>
+                    )}
                   </th>
                 </tr>
               </thead>
               <tbody className='bg-white divide-y divide-gray-200'>
                 {currentLeads.map((lead) => (
                   <tr key={lead.id} className='border-b'>
-                    <td className='pl-6 py-3 text-xs whitespace-nowrap w-2'>
+                    <td onMouseOver={() => handleMouseOver(lead.name)} onMouseOut={handleMouseOut} className='relative pl-6 py-3 text-xs whitespace-nowrap w-2'>
                       <input type="checkbox" name="" id="" />
+                      
+                      {/* Popup on hover */}
+                      {hoveredCard === lead.name && (
+                        <span className="absolute -top-7 left-1 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                          <span>Select {lead.name}</span>
+                        </span>
+                      )}
                     </td>
                     <td>
-                      <button onClick={handleLeadDetailsToggle} className='px-6 pl-3 py-2 text-xs whitespace-nowrap text-blue-500'>
+                      <button onClick={handleLeadToggle} onMouseOver={() => handleMouseOver(lead.name+'.')} onMouseOut={handleMouseOut} className='relative px-6 pl-3 py-2 text-xs whitespace-nowrap text-blue-500'>
                         {lead.name}
+                      
+                        {/* Popup on hover */}
+                        {hoveredCard === lead.name+'.' && (
+                          <span className="absolute -top-12 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                            <span>{lead.name}</span> <hr />
+                            <span>Click to view more details</span>
+                          </span>
+                        )}
                       </button>
                     </td>
-                    <td className='px-6 py-3 text-xs whitespace-nowrap text-gray-700'>
+                    <td onMouseOver={() => handleMouseOver(lead.topic)} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-xs whitespace-nowrap text-gray-700'>
                       {lead.topic}
+                      
+                      {/* Popup on hover */}
+                      {hoveredCard === lead.topic && (
+                        <span className="absolute -top-7 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                          <span>{lead.topic}</span>
+                        </span>
+                      )}
                     </td>
                     <td className='px-6 py-3 text-xs whitespace-nowrap text-gray-700'>
                       {lead.statusReason}
                     </td>
-                    <td className='px-6 py-3 text-xs whitespace-nowrap text-gray-700'>
+                    <td onMouseOver={() => handleMouseOver(lead.createdOn)} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-xs whitespace-nowrap text-gray-700'>
                       {lead.createdOn}
+                      
+                      {/* Popup on hover */}
+                      {hoveredCard === lead.createdOn && (
+                        <span className="absolute -top-7 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                          <span>{lead.createdOn}</span>
+                        </span>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -180,7 +246,7 @@ const LeadTable: React.FC = () => {
       )}
 
       
-      {leadDetailsOpen && <LeadDetailsModal handleLeadDetailsToggle={handleLeadDetailsToggle} />}
+      {leadOpen && <LeadModal handleLeadToggle={handleLeadToggle} />}
     </>
   );
 };

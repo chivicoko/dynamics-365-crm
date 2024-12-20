@@ -120,6 +120,28 @@ input:checked + .slider:before {
 }
 
 
+/* scrollbar2 */
+.custom-scrollbar2::-webkit-scrollbar {
+  width: 8px;
+  /* display: none; */
+  height: 2px;
+  width: 2px;
+}
+
+.custom-scrollbar2::-webkit-scrollbar-track {
+  background: #E3E4E6;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.custom-scrollbar2::-webkit-scrollbar-thumb {
+  background: #4b70ec;
+  border-radius: 8px;
+  width: 1px;
+  cursor: pointer;
+}
+
+
 
 /* custom pagination */
 /* right side */

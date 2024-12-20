@@ -18,7 +18,7 @@ const LeadDetailsModal: React.FC<leadDetailsModalProps> = ({handleLeadDetailsTog
         <div className="relative w-[52%] h-[88.5%] rounded-[20px] p-[2.5px] bg-gradient-to-r from-[#5971fc] via-[#60a5fa] to-[#c084fc]">
             <div className="custom-scrollbar overflow-auto py-5 px-6 w-full h-full bg-gradient-to-b from-white via-white to-[#f0edf4] rounded-[17px] shadow-xl flex flex-col gap-4">
                 <div className="flex items-center justify-between">
-                    <p className='flex items-center gap-1'>📧 <span>Engage with Jane Reyes</span></p>
+                    <p className='flex items-center gap-1'>🤵 <span>Lead Details</span></p>
                     <button onClick={handleLeadDetailsToggle} className='w-6 h-6 p-2 flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl'>&times;</button>
                 </div>
 
