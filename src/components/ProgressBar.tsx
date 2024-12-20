@@ -3,14 +3,13 @@ import React from 'react'
 
 const ProgressBar = () => {
   return (
-    <div className="flex-1 hidden md:block">
-      {/* Progress bar */}
+    <div className="flex-1">
       <div className="relative w-full">
         {/* Section Labels Above */}
         <div className="flex justify-between space-x-1 mb-0">
           <span className="text-xs self-end"><Refresh style={{ fontSize: '12px' }} /> 1 month until Q4 ends</span>
-          <span className="flex justify-between space-x-7">
-            <span className="text-xs self-end">Target &nbsp; <strong>$45 million</strong></span>
+          <span className="flex justify-between space-x-2 lg:space-x-32 xl:space-x-7">
+            <span className="text-xs self-end flex items-center justify-end gap-1 flex-wrap">Target <strong>$45 million</strong></span>
             <span className="text-xs self-end">68% of target achieved</span>
           </span>
         </div>
@@ -29,25 +28,25 @@ const ProgressBar = () => {
         </div>
 
         {/* Section Labels Below */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 flex-wrap whitespace-nowrap">
           <div className="self-start flex items-center space-x-1">
-            <div className="w-2 h-2 bg-[#4ade808e] rounded-full"></div>
+            <div className="w-1 md:w-2 h-1 md:h-2 bg-[#4ade808e] rounded-full"></div>
             <p className="text-xs">Won $18m</p>
           </div>
           <div className="self-start flex items-center space-x-1">
-            <div className="w-2 h-2 bg-[#60a5fa9c] rounded-full"></div>
+            <div className="w-1 md:w-2 h-1 md:h-2 bg-[#60a5fa9c] rounded-full"></div>
             <p className="text-xs">Committed $8m</p>
           </div>
           <div className="self-start flex items-center space-x-1">
-            <div className="w-2 h-2 bg-[#c084fc95] rounded-full"></div>
+            <div className="w-1 md:w-2 h-1 md:h-2 bg-[#c084fc95] rounded-full"></div>
             <p className="text-xs">Best case $7m</p>
           </div>
           <div className="self-start flex items-center space-x-1">
-            <div className="w-2 h-2 bg-[#fbbe248e] rounded-full"></div>
+            <div className="w-1 md:w-2 h-1 md:h-2 bg-[#fbbe248e] rounded-full"></div>
             <p className="text-xs">Qualified $3m</p>
           </div>
           <div className="self-start flex items-center space-x-1">
-            <div className="w-2 h-2 bg-[#e5e7eb] rounded-full"></div>
+            <div className="w-1 md:w-2 h-1 md:h-2 bg-[#e5e7eb] rounded-full"></div>
             <p className="text-xs">Leads $75m</p>
           </div>
         </div>
