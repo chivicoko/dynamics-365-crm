@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  transition: all .2s ease !important;
+}
+
+body {
+  color: var(--foreground);
+  /* background: var(--background); */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.loader {
+  display: inline-grid;
+  width: 40px;
+  aspect-ratio: 1;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  border-radius: 50%;
+  background: repeating-conic-gradient(#134343 0 60deg, #241c4e 0 120deg); 
+  /* background: rgb(87, 3, 160); */
+  animation: l6 4s linear infinite;
+}
+.loader:before {
+  translate: 0 -100%;
+}
+.loader:after {
+  padding: 20%;
+  mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+  animation-direction: reverse;
+}
+@keyframes l6 {to { rotate: 1turn; }}
+
+
+/* The switch */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Round slider */
+.slider.round {
+  border-radius: 34px;
+}
+
+/* The circle */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2.5px;
+  bottom: 2.5px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Checked state */
+input:checked + .slider {
+  background-color: #6E0080;
+}
+
+/* Move the circle when checked */
+input:checked + .slider:before {
+  transform: translateX(23px);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+/* scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  display: none;
+  height: 4px;
+  width: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #E3E4E6;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4b70ec;
+  border-radius: 8px;
+  width: 1px;
+  cursor: pointer;
+}
+
+
+
+/* custom pagination */
+/* right side */
+.MuiStack-root nav {
+  background: transparent;
+  box-shadow: none;
+}
+  
+.MuiStack-root .MuiPagination-ul {
+  justify-content: center;
+  gap: 0;
+}
+  
+.MuiStack-root .MuiPaginationItem-root {
+  color: #545F7D;
+  font-size: 16px;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.MuiStack-root .MuiPaginationItem-root:hover {
+  background: #afc5e190;
+}
+  
+.MuiStack-root .MuiPaginationItem-root:disabled {
+  cursor: not-allowed;
+}
+  
+/* The active/current page */
+.MuiStack-root .Mui-selected {
+  background-color: transparent !important;
+  color: #545F7D !important;
+  font-weight: bold;
+}
+  
+/* The arrow icons (next/previous) */
+.MuiStack-root .MuiPaginationItem-previousNext {
+  background: #afc5e190;
+  color: #545F7D;
+  /* background-color: #213F7D1A; */
+  width: 20px;
+  height: 26px;
+  border-radius: 4px;
+}
+
+.MuiStack-root .MuiPaginationItem-previousNext:hover {
+  background: #7091ead3;
+}
+
+/* The ellipsis (dots) */
+.MuiStack-root .MuiPaginationItem-ellipsis {
+  color: #6c757d;
+  font-size: 20px;
+}
+
+
+/* left side */
+.pagination {
+  margin-top: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination .pages {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.pagination .pages span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.42px;
+  color: #545F7D;
+}
+
+.pagination .pages .select-container {
+  /* background: #213F7D1A; */
+  background: #afc5e190;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  border: none;
+}
+
+.pagination .pages .select-container .span {
+  padding: .35rem 2.2rem;
+  padding-left: .8rem;
+  cursor: pointer;
+  flex: 1;
+  /* appearance: none; */
+  box-sizing: border-box;
+  font-weight: 500;
+  /* color: #213F7D; */
+  display: flex;
+  border: none;
+  align-items: center;
+  /* gap: 1rem; */
+
+  appearance: none; /* Remove default styling */
+  background: url('/np_next_2236826_000000 2.svg') no-repeat right 10px center; /* Custom arrow */
+  background-size: 14px; /* Adjust size of arrow */
+}
+
+
+/* Custom styles for the range input */
+.range-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid #4A5568; /* Change thumb color */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.range-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid #4A5568;
+  border-radius: 50%;
+  cursor: pointer;
+}
