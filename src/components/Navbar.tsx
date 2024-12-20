@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
   return (
     <section className='py-3 px-3 sm:px-4 flex flex-col gap-2 transition-all duration-300 '>
       <nav className="z-30">
-        <div className="flex items-center justify-between gap-4 py-1 border bg-white shadow-md rounded-md">
+        <div className="flex items-center justify-between gap-4 lg:gap-4 py-1 border bg-white shadow-md rounded-md">
           <button onClick={() => setOpen(!open)} className="ml-3 lg:hidden text-gray-700 focus:outline-[#247B7B]">
             <Menu />
           </button>

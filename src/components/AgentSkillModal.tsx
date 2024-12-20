@@ -72,7 +72,7 @@ const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
                                         ))}
                                     </div>
                                     <input
-                                        type="email"
+                                        type="text"
                                         name="searchText"
                                         placeholder='name@example.com'
                                         value={searchText}
