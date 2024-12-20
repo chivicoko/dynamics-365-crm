@@ -95,33 +95,35 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className={`${open2 ? '-translate-y-full' : 'translate-y-0'} fixed left-0 top-0 bg-white w-screen min-h-fit h-1/4 z-[1000] transform transition-transform duration-300 lg:hidden flex flex-col items-center justify-center flex-wrap gap-2 shadow-xl p-6 pt-2`}>
-            <button className='self-end my-2 mr-4 text-3xl lg:hidden' onClick={handleToggleSidebar2}>&times;</button>
-            <div className='flex items-center gap-3 flex-wrap'>
-              <ul className="flex items-center flex-wrap gap-2">
-                {navbarTabs.slice(0, 6).map(navbarTab => {
-                  return(
-                    <li key={navbarTab.id}>
-                      <button className='py-1 px-2 text-xs font-semibold whitespace-nowrap text-gray-700'>{navbarTab.icon} {navbarTab.title}</button>
-                    </li>
-                  )
-                })}
-              </ul>
-              <ul className="flex items-center flex-wrap gap-2">
-                {navbarTabs.slice(6, 9).map(navbarTab => {
-                  return(
-                    <li key={navbarTab.id}>
-                      <button className='py-1 px-2 text-xs font-semibold whitespace-nowrap text-gray-700 border rounded-[3.5px]'>{navbarTab.icon} {navbarTab.title}</button>
-                    </li>
-                  )
-                })}
-              </ul>
+              <button className='self-end my-2 mr-4 text-3xl lg:hidden' onClick={handleToggleSidebar2}>&times;</button>
+              <div className='flex items-center gap-3 flex-wrap'>
+                <ul className="flex items-center flex-wrap gap-2">
+                  {navbarTabs.slice(0, 6).map(navbarTab => {
+                    return(
+                      <li key={navbarTab.id}>
+                        <button className='py-1 px-2 text-xs font-semibold whitespace-nowrap text-gray-700'>{navbarTab.icon} {navbarTab.title}</button>
+                      </li>
+                    )
+                  })}
+                </ul>
+                <ul className="flex items-center flex-wrap gap-2">
+                  {navbarTabs.slice(6, 9).map(navbarTab => {
+                    return(
+                      <li key={navbarTab.id}>
+                        <button className='py-1 px-2 text-xs font-semibold whitespace-nowrap text-gray-700 border rounded-[3.5px]'>{navbarTab.icon} {navbarTab.title}</button>
+                      </li>
+                    )
+                  })}
+                </ul>
 
-              <button className='flex items-center justify-between gap-1 py-[2px] px-1 rounded-[3.5px] bg-blue-700 text-white'>
-                <span className='' style={{fontSize: '14px'}}><ShareOutlined fontSize='small' /> </span> 
-                <span className='h-3 w-[1px] bg-gray-200'></span>
-                <KeyboardArrowDown fontSize='small'/>
-              </button>
-            </div>
+                <button className='flex items-center justify-between gap-1 py-[2px] px-1 rounded-[3.5px] bg-blue-700 text-white'>
+                  <span className='' style={{fontSize: '14px'}}><ShareOutlined fontSize='small' /> </span> 
+                  <span className='h-3 w-[1px] bg-gray-200'></span>
+                  <KeyboardArrowDown fontSize='small'/>
+                </button>
+              </div>
+            {/* <div className='lg:hidden flex flex-col items-center justify-center flex-wrap gap-2 w-full h-full shadow-xl p-6 pt-2'>
+            </div> */}
           </div>
           
         </div>
