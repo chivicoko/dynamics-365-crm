@@ -34,8 +34,7 @@ const KeyActivity = () => {
               </div>
               <div className="flex flex-col gap-">
                 <p className='text-xs font-semibold'>{keyActivity.name}</p>
-                {/* <p className='text-xs'>{keyActivity.position} . {keyActivity.at}</p> */}
-                <div className='text-xs text-gray-500 flex items-center gap-1'>
+                <div className='text-xs text-gray-500 flex items-center flex-wrap gap-1'>
                   {keyActivity.company}
                   <p className='w-1 h-1 bg-gray-500 rounded-full inline'></p>
                   {keyActivity.amount}

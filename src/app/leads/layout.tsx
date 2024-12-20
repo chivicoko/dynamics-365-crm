@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Sidebar />
       <div className="w-full lg:w-[87vw] min-h-screen pb-16 border-l-2">
         <Navbar />
-        <section className="w-full px-4 rounded-md">
+        <section className="w-full px-3 md:px-4 rounded-md">
           {children}
         </section>
       </div>

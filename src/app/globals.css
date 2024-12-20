@@ -229,7 +229,7 @@ input:checked + .slider:before {
 }
 
 .pagination .pages .select-container .span {
-  padding: .35rem 2.2rem;
+  padding: .20rem 2rem;
   padding-left: .8rem;
   cursor: pointer;
   flex: 1;

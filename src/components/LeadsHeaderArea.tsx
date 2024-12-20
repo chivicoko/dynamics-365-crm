@@ -21,10 +21,10 @@ const LeadsHeaderArea = () => {
   return (
     <>
         <div className="rounded-[15px] p-[2.5px] bg-gradient-to-r from-[#5971fc9c] via-[#60a5facd] to-[#c084fc95]">
-            <div className="py-5 px-6 bg-white rounded-[13px] shadow-xl">
+            <div className="py-5 px-3 md:px-6 bg-white rounded-[13px] shadow-xl">
 
             <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-1 flex-wrap">
-                <div className="flex-1 flex items-center gap-2">
+                <div className="flex-1 flex flex-col sm:flex-row items-center gap-2">
                     <div className="relative w-8 h-8 rounded-full">
                         <Image
                         src="/logo.jpg"
@@ -41,7 +41,7 @@ const LeadsHeaderArea = () => {
 
             </div>
 
-            <div className="flex flex-col lg:flex-row items-center gap-6">
+            <div className="flex flex-col lg:flex-row items-center gap-3 md:gap-6">
                 <div className='w-full lg:w-2/3 border-b-2 lg:border-b-0 lg:border-r-2 pb-6 lg:pb-0 py-2'>
                     <p className='text-sm my-3 text-gray-700'>Copilot has pinpointed 20 key leads that show strong purchase intent and are actively engaging. These leads need your focus.</p>
                     <LeadsCard handleLeadToggle={handleLeadToggle} />

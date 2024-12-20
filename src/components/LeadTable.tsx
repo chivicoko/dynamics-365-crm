@@ -96,12 +96,12 @@ const LeadTable: React.FC = () => {
       {leads && leads.length > 0 ? (
         <>
           {/* Search bar */}
-          <div className='custom-scrollbar overflow-x-scroll w-full rounded-md'>
+          <div className='custom-scrollbar2 overflow-x-scroll w-full rounded-md'>
             <table className='min-w-full'>
               <thead className='bg-white'>
                 <tr className='border-none rounded-[4px]'>
-                  <th className='pl-6 py-2 text-left text-xs font-medium text-gray-500 tracking-wider' colSpan={5}>
-                    <div className="flex items-center gap-1 rounded-[5px] md:gap-3 w-4/5 md:w-2/5 p-[2px] bg-gradient-to-r from-[#5971fc9c] via-[#60a5facd] to-[#c084fc95]">
+                  <th className='pl-2 sm:pl-6 py-2 text-left text-xs font-medium text-gray-500 tracking-wider' colSpan={5}>
+                    <div className="flex items-center gap-1 rounded-[5px] md:gap-3 w-[38%] sm:w-2/5 md:w-2/5 p-[2px] bg-gradient-to-r from-[#5971fc9c] via-[#60a5facd] to-[#c084fc95]">
                       <div className="px-1 bg-white w-full rounded-[3px] flex items-center justify-between">
                         <input
                           type="text"
@@ -122,7 +122,7 @@ const LeadTable: React.FC = () => {
               <thead className='bg-white border-b'>
                 <tr className='border-0 rounded-[4px]'>
                   <th className='pl-6 py-3 text-left text-xs font-semibold tracking-wider'></th>
-                  <th onClick={() => requestSort('name')} onMouseOver={() => handleMouseOver("Name")} onMouseOut={handleMouseOut} className='relative px-6 pl-3 py-2 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
+                  <th onClick={() => requestSort('name')} onMouseOver={() => handleMouseOver("Name")} onMouseOut={handleMouseOut} className='relative px-6 pl-3 py-2 text-left whitespace-nowrap text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Name <KeyboardArrowDown fontSize='small' />
                     
                     {/* Popup on hover */}
@@ -132,7 +132,7 @@ const LeadTable: React.FC = () => {
                       </span>
                     )}
                   </th>
-                  <th onClick={() => requestSort('topic')} onMouseOver={() => handleMouseOver("Topic")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
+                  <th onClick={() => requestSort('topic')} onMouseOver={() => handleMouseOver("Topic")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left whitespace-nowrap text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Topic <KeyboardArrowDown fontSize='small' />
                     
                     {/* Popup on hover */}
@@ -142,7 +142,7 @@ const LeadTable: React.FC = () => {
                       </span>
                     )}
                   </th>
-                  <th onClick={() => requestSort('statusReason')} onMouseOver={() => handleMouseOver("Status reason")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
+                  <th onClick={() => requestSort('statusReason')} onMouseOver={() => handleMouseOver("Status reason")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left whitespace-nowrap text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Status reason <KeyboardArrowDown fontSize='small' />
                     
                     {/* Popup on hover */}
@@ -152,7 +152,7 @@ const LeadTable: React.FC = () => {
                       </span>
                     )}
                   </th>
-                  <th onClick={() => requestSort('createdOn')} onMouseOver={() => handleMouseOver("Created on")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
+                  <th onClick={() => requestSort('createdOn')} onMouseOver={() => handleMouseOver("Created on")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left whitespace-nowrap text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Created on <KeyboardArrowDown fontSize='small' />
 
                     {/* Popup on hover */}
@@ -208,7 +208,7 @@ const LeadTable: React.FC = () => {
                       
                       {/* Popup on hover */}
                       {hoveredCard === lead.createdOn && (
-                        <span className="absolute -top-7 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
+                        <span className="absolute -top-7 -left-6 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                           <span>{lead.createdOn}</span>
                         </span>
                       )}
@@ -220,7 +220,7 @@ const LeadTable: React.FC = () => {
           </div>
 
           {/* Pagination */}
-          <div className='pagination mt-6 flex flex-col md:flex-row items-center justify-between'>
+          <div className='pagination mt-6 flex flex-col gap-2 md:flex-row items-center justify-between'>
             <div className='pages flex items-center justify-between gap-3'>
               <span>Showing</span>
               <div className="select-container">

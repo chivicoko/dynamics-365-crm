@@ -47,7 +47,7 @@ const LeadsCard: React.FC<leadModalProps> = ({ handleLeadToggle } ) => {
                     </div>
                     <div className="flex flex-col gap-1">
                         <p className='text-xs font-semibold'>{leadsCard.name}</p>
-                        <div className='text-xs text-gray-500 flex items-center gap-1 whitespace-nowrap'>
+                        <div className='text-xs text-gray-500 flex items-center gap-1 flex-wrap whitespace-nowrap'>
                             {leadsCard.position}
                             <p className='w-1 h-1 bg-gray-500 rounded-full inline'></p>
                             {leadsCard.at}
@@ -61,7 +61,7 @@ const LeadsCard: React.FC<leadModalProps> = ({ handleLeadToggle } ) => {
                 </div>
                 <p className='text-xs'>{leadsCard.description}</p>
                 </div>
-                <div className='text-xs text-gray-500 px-3 flex items-center gap-1'>
+                <div className='text-xs whitespace-nowrap text-gray-500 px-3 flex items-center gap-1'>
                     {leadsCard.footerWriteup1}
                     <p className='w-1 h-1 bg-gray-500 rounded-full'></p>
                     {leadsCard.footerWriteup2}
@@ -71,10 +71,9 @@ const LeadsCard: React.FC<leadModalProps> = ({ handleLeadToggle } ) => {
             {/* Conditional Popup on hover */}
             {hoveredCard === leadsCard.id && (
                 <div className="absolute top-0 right-2 mt-2 p-2 w-52 bg-black text-white shadow-xl rounded-lg z-10 text-xs">
-                    <p>{leadsCard.name}.</p>
-                    <p>{leadsCard.position} at {leadsCard.at}</p> <hr className='my-2' />
-                    <p>- {leadsCard.footerWriteup1}</p>
-                    <p>- {leadsCard.footerWriteup2}</p>
+                    <p>{leadsCard.name}</p>
+                    <hr className='my-1' />
+                    <p>{leadsCard.position} at {leadsCard.at}</p>
                 </div>
             )}
         </div>

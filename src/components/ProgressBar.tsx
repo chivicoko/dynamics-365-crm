@@ -3,7 +3,7 @@ import React from 'react'
 
 const ProgressBar = () => {
   return (
-    <div className="flex-1">
+    <div className="flex-1 hidden md:block">
       {/* Progress bar */}
       <div className="relative w-full">
         {/* Section Labels Above */}

@@ -11,21 +11,30 @@ const EngageLead = () => {
                 
                 <ul>
                     <li className='text-xs flex items-center gap-2'>
-                        <p className='w-1 h-1 bg-gray-500 rounded-full'></p>
-                        Jane is a <strong>key decision maker</strong> and was browsing <strong>&apos;espresson machines&apos;</strong> on First Coffee&apos;s website <span className='text-[8px] bg-white border rounded-sm px-[2px]'>1</span>
+                        <span className='w-1 h-1 bg-gray-500 rounded-full'></span>
+                        <span>
+                            Jane is a <strong>key decision maker</strong> and was browsing <strong>&apos;espresson machines&apos;</strong> on First Coffee&apos;s website
+                            <span className='text-[8px] bg-white border rounded-sm px-[2px] ml-3'>1</span>
+                        </span>
                     </li>
                     <li className='text-xs flex items-center gap-2'>
-                        <p className='w-1 h-1 bg-gray-500 rounded-full'></p>
-                        Multiple people at her company have reported &apos;slowness&apos; during <strong>service requests</strong> <span className='text-[8px] bg-white border rounded-sm px-[2px]'>2</span>
+                        <span className='w-1 h-1 bg-gray-500 rounded-full'></span>
+                        <span>
+                            Multiple people at her company have reported &apos;slowness&apos; during <strong>service requests</strong>
+                            <span className='text-[8px] bg-white border rounded-sm px-[2px] ml-3'>2</span>
+                        </span>
                     </li>
                     <li className='text-xs flex items-center gap-2'>
-                        <p className='w-1 h-1 bg-gray-500 rounded-full'></p>
-                        Northwind Traders currently see  <strong>$200M in revenue</strong> from their in-store coffee shops. <span className='text-[8px] bg-white border rounded-sm px-[2px]'>3</span>
+                        <span className='w-1 h-1 bg-gray-500 rounded-full'></span>
+                        <span>
+                            Northwind Traders currently see  <strong>$200M in revenue</strong> from their in-store coffee shops.
+                            <span className='text-[8px] bg-white border rounded-sm px-[2px] ml-3'>3</span>
+                        </span>
                     </li>
                 </ul>
 
-                <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-2 p-3 w-[179px] shadow-lg bg-white rounded-2xl">
+                <div className="flex items-center gap-2 flex-wrap">
+                    <div className="flex items-center gap-2 p-3 w-full md:w-[179px] shadow-lg bg-white rounded-2xl">
                         <div className="relative w-10 h-10 rounded-full">
                             <Image
                             src="/userplaceholder1.svg"
@@ -40,7 +49,7 @@ const EngageLead = () => {
                             <p className='text-gray-700 text-sm font-semibold'>Yes</p>
                         </div>
                     </div>
-                    <div className="flex items-center gap-2 p-3 w-[179px] shadow-md bg-white rounded-2xl">
+                    <div className="flex items-center gap-2 p-3 w-full md:w-[179px] shadow-md bg-white rounded-2xl">
                         <div className="relative w-10 h-10 rounded-full">
                             <Image
                             src="/userplaceholder1.svg"
@@ -55,7 +64,7 @@ const EngageLead = () => {
                             <p className='text-gray-700 text-sm font-semibold'>$1M</p>
                         </div>
                     </div>
-                    <div className="flex items-center gap-2 p-3 w-[179px] shadow-md bg-white rounded-2xl">
+                    <div className="flex items-center gap-2 p-3 w-full md:w-[179px] shadow-md bg-white rounded-2xl">
                         <div className="relative w-10 h-10 rounded-full">
                             <Image
                             src="/userplaceholder1.svg"
@@ -72,7 +81,7 @@ const EngageLead = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-between text-xs">
+            <div className="flex items-center justify-center sm:justify-between flex-wrap gap-2 text-xs">
                 <div className="flex items-center gap-1">
                     <button className='rounded-sm border border-gray-200 bg-gray-100'><SecurityOutlined style={{fontSize: '15px'}} /></button>
                     <div className='rounded-sm border bg-gray-100 flex items-center'>
