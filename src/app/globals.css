@@ -302,3 +302,8 @@ background:  */
 .slick-arrow.slick-prev {
   display: none !important;
 }
+
+.slick-dots {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
