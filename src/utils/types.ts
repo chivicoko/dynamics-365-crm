@@ -15,7 +15,7 @@ export interface leadsProps2 {
     img: string;
     position: string;
     at: string;
-    icon: {};
+    icon: object;
     description: string;
     footerWriteup1: string;
     footerWriteup2: string;

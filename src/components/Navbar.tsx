@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Add, DeleteOutline, EditNoteOutlined, FileCopySharp, FolderSharedOutlined, ImageOutlined, KeyboardArrowDown, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, List, Menu, PeopleOutlineOutlined, PieChartOutline, PinOutlined, Refresh, ScreenShareOutlined, ShareOutlined, Sort } from '@mui/icons-material';
+import { Add, DeleteOutline, EditNoteOutlined, ImageOutlined, KeyboardArrowDown, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, List, Menu, PeopleOutlineOutlined, PieChartOutline, Refresh, ScreenShareOutlined, ShareOutlined, Sort } from '@mui/icons-material';
 import Sidebar from './Sidebar';
 import { usePathname } from 'next/navigation';
 import LeadsHeaderArea from './LeadsHeaderArea';
