@@ -94,7 +94,8 @@ const Navbar: React.FC = () => {
             </button>
           </div>
 
-          <div className={`${open2 ? '-translate-y-full' : 'translate-y-0'} fixed left-0 top-0 bg-white w-screen min-h-fit h-1/4 z-[1000] transform transition-transform duration-300 lg:hidden flex flex-col items-center justify-center flex-wrap gap-2 shadow-xl p-6 pt-2`}>
+          <div className={`${open2 ? '-translate-y-full' : 'translate-y-0'} fixed left-0 top-0 bg-white w-screen min-h-fit z-[1000] transform transition-transform duration-300 lg:hidden flex items-center justify-center shadow-xl`}>
+            <div className='flex flex-col items-center justify-center gap-2 px-6 py-2 pb-10'>
               <button className='self-end my-2 mr-4 text-3xl lg:hidden' onClick={handleToggleSidebar2}>&times;</button>
               <div className='flex items-center gap-3 flex-wrap'>
                 <ul className="flex items-center flex-wrap gap-2">
@@ -122,8 +123,7 @@ const Navbar: React.FC = () => {
                   <KeyboardArrowDown fontSize='small'/>
                 </button>
               </div>
-            {/* <div className='lg:hidden flex flex-col items-center justify-center flex-wrap gap-2 w-full h-full shadow-xl p-6 pt-2'>
-            </div> */}
+            </div>
           </div>
           
         </div>
