@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 // import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
+import AgentSkillModal from './AgentSkillModal';
 
 interface SidebarProps {
     show?: string;
@@ -69,6 +70,9 @@ const sidebarTabs = [
 
 const Sidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = () => {} }) => {
     const [open, setOpen] = useState(false);
+    const [leadOpen, setLeadOpen] = useState(false);
+
+    const handleLeadToggle = () => setLeadOpen((prev) => !prev);
 
     
   const pathName = usePathname();
@@ -92,7 +96,7 @@ const Sidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = () =>
             <button onClick={() => setOpen(!open)} className="text-gray-700 hidden lg:block px-3 focus:outline-[#247B7B]">
                 <Menu />
             </button>
-            <div className='h-[93%] overflow-auto custom-scrollbar'>
+            <div className='h-[93%] w-full overflow-auto custom-scrollbar'>
                 <div className="flex flex-col gap-2 text-gray-600 text-[0.9rem] mt-4">
                     {/* <button className='flex items-center gap-2 px-3'><HomeOutlined fontSize='small' /> Home</button> */}
                     <Link href='/' className='flex group text-[0.8rem] font-medium'>
@@ -101,6 +105,7 @@ const Sidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = () =>
                             <HomeOutlined style={{fontSize: '15px'}} /> Home
                         </span>
                     </Link>
+                    <button onClick={handleLeadToggle} className='flex items-center justify-between px-3 text-[0.8rem] font-medium'><span className='flex items-center gap-2'><LeaderboardOutlined style={{fontSize: '15px'}} /> Agent Skill</span></button>
                     <button className='flex items-center justify-between px-3 text-[0.8rem] font-medium'><span className='flex items-center gap-2'><AccessTimeOutlined style={{fontSize: '15px'}} /> Recent</span> <KeyboardArrowDown style={{fontSize: '15px'}}/></button>
                     <button className='flex items-center justify-between px-3 text-[0.8rem] font-medium'><span className='flex items-center gap-2'><PinOutlined style={{fontSize: '15px'}} /> Pinned</span> <KeyboardArrowDown style={{fontSize: '15px'}}/></button>
                 </div>
@@ -134,6 +139,8 @@ const Sidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = () =>
                 <button className=''><KeyboardArrowDownOutlined fontSize='small'/></button>
             </span>
         </div>
+
+        {leadOpen && <AgentSkillModal handleLeadToggle={handleLeadToggle} />}
     </nav>
   );
 };

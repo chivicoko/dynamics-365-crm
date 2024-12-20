@@ -1,12 +1,12 @@
 'use client';
 
-import { leadModalProps } from '@/utils/types'
+import { leadDetailsModalProps } from '@/utils/types'
 import { EditOutlined, LinkedIn, SendOutlined, ThumbDownOutlined, ThumbUpOutlined } from '@mui/icons-material'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import EngageLead from './EngageLead';
 
-const LeadModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
+const LeadDetailsModal: React.FC<leadDetailsModalProps> = ({handleLeadDetailsToggle}) => {
     const [leadEngageOpen, setLeadEngageOpen] = useState(true);
 
     const handleEngageToggle = () => {
@@ -19,7 +19,7 @@ const LeadModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
             <div className="custom-scrollbar overflow-auto py-5 px-6 w-full h-full bg-gradient-to-b from-white via-white to-[#f0edf4] rounded-[17px] shadow-xl flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                     <p className='flex items-center gap-1'>📧 <span>Engage with Jane Reyes</span></p>
-                    <button onClick={handleLeadToggle} className='w-6 h-6 p-2 flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl'>&times;</button>
+                    <button onClick={handleLeadDetailsToggle} className='w-6 h-6 p-2 flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl'>&times;</button>
                 </div>
 
                 <div className="flex gap-2 rounded-lg shadow-md py-2 px-3 border-t border-gray-100">
@@ -82,4 +82,4 @@ const LeadModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
   )
 }
 
-export default LeadModal
+export default LeadDetailsModal

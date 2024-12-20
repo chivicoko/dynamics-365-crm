@@ -57,6 +57,10 @@ export interface leadModalProps {
   handleLeadToggle: () => void;
 }
 
+export interface leadDetailsModalProps {
+  handleLeadDetailsToggle: () => void;
+}
+
 export interface Lead {
   id: number;
   name: string;

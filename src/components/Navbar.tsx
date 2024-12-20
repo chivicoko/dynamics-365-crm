@@ -1,9 +1,7 @@
 'use client';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { Add, DeleteOutline, EditNoteOutlined, ImageOutlined, KeyboardArrowDown, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, List, Menu, PeopleOutlineOutlined, PinOutlined, Refresh } from '@mui/icons-material';
 import Sidebar from './Sidebar';
 import { usePathname } from 'next/navigation';
@@ -46,33 +44,31 @@ const Navbar: React.FC = () => {
   return (
     <section className='py-3 px-4 flex flex-col gap-2'>
       <nav className="z-30">
-        <div className="flex items-center justify-between border bg-white shadow-md rounded-md">
-            <button onClick={() => setOpen(!open)} className="ml-3 lg:hidden text-gray-700 focus:outline-[#247B7B]">
-              <Menu />
-            </button>
-          {/* <div className="flex items-center justify-start gap-2 md:gap-3 w-2/5 md:w-1/5 lg:hidden">
-          </div> */}
+        <div className="flex items-center justify-between py-1 border bg-white shadow-md rounded-md">
+          <button onClick={() => setOpen(!open)} className="ml-3 lg:hidden text-gray-700 focus:outline-[#247B7B]">
+            <Menu />
+          </button>
 
-          <button onClick={handlesalesLeadToggle} className='rounded-md px-3 py-2'>
+          <button onClick={handlesalesLeadToggle} className='rounded-md px-3 whitespace-nowrap'>
             My open leads 
             {salesLeadOpen ? <KeyboardArrowUpOutlined /> : <KeyboardArrowDownOutlined />}
           </button>
 
-          <div className="hidden md:flex items-center gap-2 px-2">
-            <ul className="flex items-center gap-2">
+          <div className="hidden md:flex items-center flex-wrap gap-2 px-2">
+            <ul className="flex items-center flex-wrap gap-2">
               {navbarTabs.slice(0, 6).map(navbarTab => {
                 return(
                   <li key={navbarTab.id}>
-                    <button className='py-1 px-2 text-xs font-semibold text-gray-700'>{navbarTab.icon} {navbarTab.title}</button>
+                    <button className='py-1 px-2 text-xs font-semibold whitespace-nowrap text-gray-700'>{navbarTab.icon} {navbarTab.title}</button>
                   </li>
                 )
               })}
             </ul>
-            <ul className="flex items-center gap-2">
+            <ul className="flex items-center flex-wrap gap-2">
               {navbarTabs.slice(6, 9).map(navbarTab => {
                 return(
                   <li key={navbarTab.id}>
-                    <button className='py-1 px-2 text-xs font-semibold text-gray-700 border rounded-[3.5px]'>{navbarTab.icon} {navbarTab.title}</button>
+                    <button className='py-1 px-2 text-xs font-semibold whitespace-nowrap text-gray-700 border rounded-[3.5px]'>{navbarTab.icon} {navbarTab.title}</button>
                   </li>
                 )
               })}

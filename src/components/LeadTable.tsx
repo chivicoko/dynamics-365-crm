@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import BasicPagination from './Pagination';
 import { leads } from '@/utils/data';
 import { KeyboardArrowDown, Search } from '@mui/icons-material';
-import Link from 'next/link';
 import { Lead } from '@/utils/types';
+import LeadDetailsModal from './LeadDetailsModal';
 
 type LeadKeys = keyof Lead;
 
@@ -21,6 +21,8 @@ const LeadTable: React.FC = () => {
   const [totalLeads, setTotalLeads] = useState<number>(0);
   const [searchText, setSearchText] = useState<string>('');
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
+  
+  const [leadDetailsOpen, setLeadDetailsOpen] = useState(false);
 
   useEffect(() => {
     setTotalLeads(leads.length);
@@ -77,6 +79,8 @@ const LeadTable: React.FC = () => {
     }
     setSortConfig({ key, direction });
   };
+  
+  const handleLeadDetailsToggle = () => setLeadDetailsOpen((prev) => !prev);
 
   return (
     <>
@@ -130,9 +134,9 @@ const LeadTable: React.FC = () => {
                       <input type="checkbox" name="" id="" />
                     </td>
                     <td>
-                      <Link href={`/leads/${lead.id}`} className='px-6 pl-3 py-2 text-xs whitespace-nowrap text-blue-500'>
+                      <button onClick={handleLeadDetailsToggle} className='px-6 pl-3 py-2 text-xs whitespace-nowrap text-blue-500'>
                         {lead.name}
-                      </Link>
+                      </button>
                     </td>
                     <td className='px-6 py-3 text-xs whitespace-nowrap text-gray-700'>
                       {lead.topic}
@@ -174,6 +178,9 @@ const LeadTable: React.FC = () => {
       ) : (
         <div className='text-center text-xl text-gray-600'>No leads found</div>
       )}
+
+      
+      {leadDetailsOpen && <LeadDetailsModal handleLeadDetailsToggle={handleLeadDetailsToggle} />}
     </>
   );
 };
