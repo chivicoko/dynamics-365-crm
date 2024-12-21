@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
               {navbarTabs.slice(0, 6).map(navbarTab => {
                 return(
                   <li key={navbarTab.id}>
-                    <button className='py-1 px-2 text-xs font-semibold whitespace-nowrap text-gray-700'>{navbarTab.icon} {navbarTab.title}</button>
+                    <button className='py-1 px- text-xs font-semibold whitespace-nowrap text-gray-700'>{navbarTab.icon} {navbarTab.title}</button>
                   </li>
                 )
               })}
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
               {navbarTabs.slice(6, 9).map(navbarTab => {
                 return(
                   <li key={navbarTab.id}>
-                    <button className='py-1 px-2 text-xs font-semibold whitespace-nowrap text-gray-700 border rounded-[3.5px]'>{navbarTab.icon} {navbarTab.title}</button>
+                    <button className='py-1 px-1 text-xs font-semibold whitespace-nowrap text-gray-700 border rounded-[3.5px]'>{navbarTab.icon} {navbarTab.title}</button>
                   </li>
                 )
               })}
