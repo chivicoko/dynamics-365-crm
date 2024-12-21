@@ -9,8 +9,8 @@ const EngageLead: React.FC<leadsProps2> = ({lead}) => {
     const [salesLeadOpen, setSalesLeadOpen] = useState(false);
 
     const handlesalesLeadToggle = () =>setSalesLeadOpen((prev) => !prev);
-
     // console.log(lead);
+
 
   return (
     <>

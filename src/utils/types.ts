@@ -35,6 +35,10 @@ export interface leadModalProps {
   handleLeadToggle: () => void;
 }
 
+export interface activitiesModalProps {
+  handleActivitiesToggle: () => void;
+}
+
 export interface leadDetailsModalProps {
   handleLeadDetailsToggle: () => void;
 }
@@ -45,4 +49,11 @@ export interface Lead {
   topic: string;
   statusReason: string;
   createdOn: string;
+}
+
+export type LeadKeys = keyof Lead;
+
+export interface SortConfig {
+  key: LeadKeys;
+  direction: 'asc' | 'desc';
 }

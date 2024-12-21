@@ -29,7 +29,7 @@ const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
     <div className="fixed inset-0 p-2 flex items-center justify-center bg-black bg-opacity-60 z-50">
         <div className="overflow-auto custom-scrollbar relative w-[94%] h-[89.5%] sm:w-[90%] sm:h-[88.5%] md:w-[90%] md:h-[88.5%] lg:w-[75%] lg:h-[88.5%] xl:w-[52%] xl:h-[88.5%] rounded-[20px] py-5 px-3 sm:px-6 pt-8 bg-gradient-to-b from-white via-white to-[#eee9f5] shadow-xl flex flex-col justify-between gap-6 text-gray-800">
             <div className='flex flex-col gap-4'>
-                <button onClick={handleLeadToggle} className='mb-2 w-6 h-6 md:h-8 md:w-8 p-2 self-end flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl md:text-3xl'>&times;</button>
+                <button onClick={handleLeadToggle} className='border mb-2 w-6 h-6 p-2 self-end flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl'>&times;</button>
                 <p className='flex items-center gap-1 font-semibold'>
                     <span className='bg-gradient-to-r from-[#475ac7] via-[#3a71b5] to-[#7848a9] bg-clip-text text-transparent'>✨</span>
                     <span>Agent Skill</span>

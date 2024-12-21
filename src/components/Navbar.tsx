@@ -32,11 +32,7 @@ const Navbar: React.FC = () => {
     }
   }, [pathName]);
   
-    const handlesalesLeadToggle = () => {
-      if (pathName === '/leads') {
-        setSalesLeadOpen((prev) => !prev);
-      }
-    };
+  const handlesalesLeadToggle = () => pathName === '/leads' ? setSalesLeadOpen((prev) => !prev) : null;
   
   const closeSidebar = () => setOpen(false);
   
@@ -44,7 +40,7 @@ const Navbar: React.FC = () => {
   
 
   return (
-    <section className='py-3 px-3 sm:px-4 flex flex-col gap-2 transition-all duration-300 '>
+    <section className='py-3 px-3 sm:px-4 flex flex-col gap-2 transition-all duration-300 ease-in-out'>
       <nav className="z-30">
         <div className="flex items-center justify-between gap-4 lg:gap-4 py-1 border bg-white shadow-md rounded-md">
           <button onClick={() => setOpen(!open)} className="ml-3 lg:hidden text-gray-700 focus:outline-[#247B7B]">
@@ -72,7 +68,7 @@ const Navbar: React.FC = () => {
               {navbarTabs.slice(0, 6).map(navbarTab => {
                 return(
                   <li key={navbarTab.id}>
-                    <button className='py-1 px- text-xs font-semibold whitespace-nowrap text-gray-700'>{navbarTab.icon} {navbarTab.title}</button>
+                    <button className='py-1 px-[2px] rounded-sm hover:bg-gray-100 text-xs font-semibold whitespace-nowrap text-gray-700'>{navbarTab.icon} {navbarTab.title}</button>
                   </li>
                 )
               })}
@@ -81,15 +77,15 @@ const Navbar: React.FC = () => {
               {navbarTabs.slice(6, 9).map(navbarTab => {
                 return(
                   <li key={navbarTab.id}>
-                    <button className='py-1 px-1 text-xs font-semibold whitespace-nowrap text-gray-700 border rounded-[3.5px]'>{navbarTab.icon} {navbarTab.title}</button>
+                    <button className='py-1 px-[2px] text-xs font-semibold hover:bg-gray-100 whitespace-nowrap text-gray-700 border rounded-[3.5px]'>{navbarTab.icon} {navbarTab.title}</button>
                   </li>
                 )
               })}
             </ul>
 
-            <button className='flex items-center justify-between gap-1 py-[2px] px-1 rounded-[3.5px] bg-blue-700 text-white'>
+            <button className='flex items-center justify-between gap-1 py-[2px] px-1 rounded-[3.5px] border border-transparent hover:border-blue-700 bg-blue-700 hover:bg-transparent text-white hover:text-blue-700 group'>
               <span className='' style={{fontSize: '14px'}}><ScreenShareOutlined fontSize='small' /> </span> 
-              <span className='h-3 w-[1px] bg-gray-200'></span>
+              <span className='h-3 w-[1px] bg-gray-200 group-hover:bg-blue-500'></span>
               <KeyboardArrowDown fontSize='small'/>
             </button>
           </div>

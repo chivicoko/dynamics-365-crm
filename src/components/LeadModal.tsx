@@ -50,7 +50,7 @@ const LeadModal: React.FC<leadModalProps> = ({ handleLeadToggle }) => {
             <p className="flex items-center gap-1">
               📧 <span>Engage with {leadsCards[currentLeadIndex].name}</span>
             </p>
-            <button onClick={handleLeadToggle} className="w-6 h-6 p-2 flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl">
+            <button onClick={handleLeadToggle} className="border w-6 h-6 p-2 flex items-center justify-center rounded-full hover:bg-gray-100 text-2xl">
               &times;
             </button>
           </div>

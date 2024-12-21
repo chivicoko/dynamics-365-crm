@@ -4,15 +4,8 @@ import React, { useEffect, useState } from 'react';
 import BasicPagination from './Pagination';
 import { leads } from '@/utils/data';
 import { KeyboardArrowDown, Search } from '@mui/icons-material';
-import { Lead } from '@/utils/types';
 import LeadModal from './LeadModal';
-
-type LeadKeys = keyof Lead;
-
-interface SortConfig {
-  key: LeadKeys;
-  direction: 'asc' | 'desc';
-}
+import { LeadKeys, SortConfig } from '@/utils/types';
 
 
 const LeadTable: React.FC = () => {
@@ -50,6 +43,15 @@ const LeadTable: React.FC = () => {
     return sortableLeads;
   }, [sortConfig]);
 
+  // Handle column sorting
+  const requestSort = (key: LeadKeys) => {
+    let direction: 'asc' | 'desc' = 'asc';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+  };
+
   // Search function
   const filteredLeads = sortedLeads.filter((lead) => {
     return (
@@ -60,6 +62,7 @@ const LeadTable: React.FC = () => {
     );
   });
 
+  // pagination
   const indexOfLastLead = currentPage * leadsPerPage;
   const indexOfFirstLead = indexOfLastLead - leadsPerPage;
   const currentLeads = filteredLeads.slice(indexOfFirstLead, indexOfLastLead);
@@ -70,15 +73,6 @@ const LeadTable: React.FC = () => {
   const handleRowsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setLeadsPerPage(Number(event.target.value));
     setCurrentPage(1);
-  };
-
-  // Handle column sorting
-  const requestSort = (key: LeadKeys) => {
-    let direction: 'asc' | 'desc' = 'asc';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
-      direction = 'desc';
-    }
-    setSortConfig({ key, direction });
   };
   
   const handleLeadToggle = () => setLeadOpen((prev) => !prev);
@@ -95,9 +89,9 @@ const LeadTable: React.FC = () => {
     <>
       {leads && leads.length > 0 ? (
         <>
-          {/* Search bar */}
           <div className='custom-scrollbar2 overflow-x-scroll w-full rounded-md'>
             <table className='min-w-full'>
+              {/* Search bar */}
               <thead className='bg-white'>
                 <tr className='border-none rounded-[4px]'>
                   <th className='pl-2 sm:pl-6 py-2 text-left text-xs font-medium text-gray-500 tracking-wider' colSpan={5}>
@@ -125,7 +119,6 @@ const LeadTable: React.FC = () => {
                   <th onClick={() => requestSort('name')} onMouseOver={() => handleMouseOver("Name")} onMouseOut={handleMouseOut} className='relative px-6 pl-3 py-2 text-left whitespace-nowrap text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Name <KeyboardArrowDown fontSize='small' />
                     
-                    {/* Popup on hover */}
                     {hoveredCard === 'Name' && (
                       <span className="absolute -top-11 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                         <span>Click to sort by &apos;Name&apos; column</span>
@@ -135,7 +128,6 @@ const LeadTable: React.FC = () => {
                   <th onClick={() => requestSort('topic')} onMouseOver={() => handleMouseOver("Topic")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left whitespace-nowrap text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Topic <KeyboardArrowDown fontSize='small' />
                     
-                    {/* Popup on hover */}
                     {hoveredCard === 'Topic' && (
                       <span className="absolute -top-7 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                         <span>Click to sort by &apos;Topic&apos; column</span>
@@ -145,7 +137,6 @@ const LeadTable: React.FC = () => {
                   <th onClick={() => requestSort('statusReason')} onMouseOver={() => handleMouseOver("Status reason")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left whitespace-nowrap text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Status reason <KeyboardArrowDown fontSize='small' />
                     
-                    {/* Popup on hover */}
                     {hoveredCard === 'Status reason' && (
                       <span className="absolute -top-11 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                         <span>Click to sort by &apos;Status reason&apos; column</span>
@@ -155,7 +146,6 @@ const LeadTable: React.FC = () => {
                   <th onClick={() => requestSort('createdOn')} onMouseOver={() => handleMouseOver("Created on")} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-left whitespace-nowrap text-xs font-semibold tracking-wider text-gray-700 cursor-pointer'>
                     Created on <KeyboardArrowDown fontSize='small' />
 
-                    {/* Popup on hover */}
                     {hoveredCard === 'Created on' && (
                       <span className="absolute -top-11 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                         <span>Click to sort by &apos;Created on&apos; column</span>
@@ -170,7 +160,6 @@ const LeadTable: React.FC = () => {
                     <td onMouseOver={() => handleMouseOver(lead.name)} onMouseOut={handleMouseOut} className='relative pl-6 py-3 text-xs whitespace-nowrap w-2'>
                       <input type="checkbox" name="" id="" />
                       
-                      {/* Popup on hover */}
                       {hoveredCard === lead.name && (
                         <span className="absolute -top-7 left-1 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                           <span>Select {lead.name}</span>
@@ -181,7 +170,6 @@ const LeadTable: React.FC = () => {
                       <button onClick={handleLeadToggle} onMouseOver={() => handleMouseOver(lead.name+'.')} onMouseOut={handleMouseOut} className='relative px-6 pl-3 py-2 text-xs whitespace-nowrap text-blue-500'>
                         {lead.name}
                       
-                        {/* Popup on hover */}
                         {hoveredCard === lead.name+'.' && (
                           <span className="absolute -top-12 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                             <span>{lead.name}</span> <hr />
@@ -193,7 +181,6 @@ const LeadTable: React.FC = () => {
                     <td onMouseOver={() => handleMouseOver(lead.topic)} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-xs whitespace-nowrap text-gray-700'>
                       {lead.topic}
                       
-                      {/* Popup on hover */}
                       {hoveredCard === lead.topic && (
                         <span className="absolute -top-7 left-16 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                           <span>{lead.topic}</span>
@@ -206,7 +193,6 @@ const LeadTable: React.FC = () => {
                     <td onMouseOver={() => handleMouseOver(lead.createdOn)} onMouseOut={handleMouseOut} className='relative px-6 py-3 text-xs whitespace-nowrap text-gray-700'>
                       {lead.createdOn}
                       
-                      {/* Popup on hover */}
                       {hoveredCard === lead.createdOn && (
                         <span className="absolute -top-7 -left-6 mt-2 p-2 w-fit bg-black text-white shadow-xl rounded-lg z-10 text-xs">
                           <span>{lead.createdOn}</span>
