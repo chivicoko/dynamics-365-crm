@@ -39,7 +39,7 @@ const LeadModal: React.FC<leadModalProps> = ({ handleLeadToggle }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    afterChange: (current: number) => setCurrentLeadIndex(current), // Set current lead index on slide change
+    afterChange: (current: number) => setCurrentLeadIndex(current),
   };
 
   return (

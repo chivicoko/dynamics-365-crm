@@ -5,7 +5,7 @@ import { DirectionsRunOutlined, EditRoadOutlined, FileCopyOutlined, KeyboardArro
 import React, { useState } from 'react'
 
 const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
-    const [searchText, setSearchText] = useState<string>('');
+    const [textInput, setTextInput] = useState<string>('');
     const [inputItems, setInputItems] = useState<string[]>([]);
     const [salesLeadOpen, setSalesLeadOpen] = useState(false);
 
@@ -14,16 +14,16 @@ const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
       
-        const newItems = searchText.split(',').map(item => item.trim()).filter(item => item !== '');
+        const newItems = textInput.split(',').map(item => item.trim()).filter(item => item !== '');
       
         setInputItems(prevItems => [...prevItems, ...newItems]);
       
-        setSearchText('');
-      };
+        setTextInput('');
+    };
       
-      const removeItem = (index: number) => {
-        setInputItems(prevItems => prevItems.filter((_, i) => i !== index));
-      };
+    const removeItem = (index: number) => {
+    setInputItems(prevItems => prevItems.filter((_, i) => i !== index));
+    };
 
   return (
     <div className="fixed inset-0 p-2 flex items-center justify-center bg-black bg-opacity-60 z-50">
@@ -73,10 +73,10 @@ const AgentSkillModal: React.FC<leadModalProps> = ({handleLeadToggle}) => {
                                     </div>
                                     <input
                                         type="text"
-                                        name="searchText"
+                                        name="textInput"
                                         placeholder='name@example.com'
-                                        value={searchText}
-                                        onChange={(e) => setSearchText(e.target.value)}
+                                        value={textInput}
+                                        onChange={(e) => setTextInput(e.target.value)}
                                         className="bg-transparent w-full min-w-[35%] py-1 text-xs pl-1 focus:outline-0 placeholder:text-xs md:text-base text-gray-700 leading-tight"
                                     />
                                 </div>

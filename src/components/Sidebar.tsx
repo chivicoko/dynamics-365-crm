@@ -3,7 +3,6 @@
 import { AccessTimeOutlined, AssistWalkerOutlined, CampaignOutlined, CompareOutlined, ContactMailOutlined, DashboardOutlined, HomeOutlined, KeyboardArrowDown, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, LeaderboardOutlined, ListAltOutlined, LocalActivityOutlined, LocalPostOfficeOutlined, Menu, Person3Outlined, PinOutlined, ProductionQuantityLimitsOutlined, ReceiptOutlined, RequestPageOutlined, RequestQuoteOutlined } from '@mui/icons-material';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-// import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import AgentSkillModal from './AgentSkillModal';
 
@@ -108,7 +107,6 @@ const Sidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = () =>
             </button>
             <div className='h-[93%] w-full overflow-auto custom-scrollbar'>
                 <div className="flex flex-col gap-2 text-gray-600 text-[0.9rem] mt-4">
-                    {/* <button className='flex items-center gap-2 px-3'><HomeOutlined fontSize='small' /> Home</button> */}
                     <Link href='/' className='flex group text-[0.8rem] font-medium'>
                         <span className={`${isActivePath('/') ? "bg-white" : ""} flex items-center gap-1 md:group-hover:bg-white w-full p-1`}>
                             <span className={`${isActivePath('/') ? "bg-blue-600" : ""} w-[3px] h-5 md:group-hover:bg-blue-600 rounded-full shadow-lg`}></span>

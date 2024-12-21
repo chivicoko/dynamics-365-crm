@@ -34,14 +34,14 @@ const LeadsCard: React.FC<leadModalProps> = ({ handleLeadToggle }) => {
         infinite: true,
         autoplay: true,
         speed: 300,
-        slidesToShow: 2,  // Display two cards per slide
+        slidesToShow: 2,
         slidesToScroll: 2,
         arrows: true,
         responsive: [
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 1,  // Show only 1 card on smaller screens
+                    slidesToShow: 1,
                     slidesToScroll: 1,
                 },
             },
